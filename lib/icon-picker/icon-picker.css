@@ -1,50 +1,50 @@
 .icon-picker-list {
-    display: flex;
-    flex-flow: row wrap;
-    list-style: none;
-    padding-left: 0;
+  display: flex;
+  flex-flow: row wrap;
+  list-style: none;
+  padding-left: 0;
 }
 
 .icon-picker-list li {
-    display: flex;
-    flex: 0 0 20%;
-    float: left;
-    width: 20%;
+  display: flex;
+  flex: 0 0 20%;
+  float: left;
+  width: 20%;
 }
 
 .icon-picker-list a {
-    background-color: #f9f9f9;
-    border: 1px solid #fff;
-    color: black;
-    display: block;
-    flex: 1 1 auto;
-    font-size: 12px;
-    line-height: 1.4;
-    min-height: 100px;
-    padding: 10px;
-    text-align: center;
-    user-select: none;
+  background-color: #f9f9f9;
+  border: 1px solid #fff;
+  color: black;
+  display: block;
+  flex: 1 1 auto;
+  font-size: 12px;
+  line-height: 1.4;
+  min-height: 100px;
+  padding: 10px;
+  text-align: center;
+  user-select: none;
 }
 
 .icon-picker-list a:hover,
-.icon-picker-list a.active{
-    background-color: #009E49;
-    color: #fff;
-    cursor: pointer;
-    text-decoration: none;
+.icon-picker-list a.active {
+  background-color: #009e49;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .icon-picker-list .fa,
 .icon-picker-list .fab,
 .icon-picker-list .fas,
 .icon-picker-list .far {
-    font-size: 24px;
-    margin-bottom: 10px;
-    margin-top: 5px;
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-top: 5px;
 }
 
 .icon-picker-list .name-class {
-    display: block;
-    text-align: center;
-    word-wrap: break-word;
+  display: block;
+  text-align: center;
+  word-wrap: break-word;
 }

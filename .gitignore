@@ -1,1 +1,4 @@
 conf/*
+.vscode
+.pytest_cache
+.idea

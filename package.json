@@ -1,0 +1,40 @@
+{
+  "name": "mviewerstudio",
+  "version": "1.0.0",
+  "description": "Mviewer Studio permet de générer une configuration pour [mviewer](https://github.com/geobretagne/mviewer) de manière graphique.",
+  "main": "js/mviewerstudio.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier:check": "prettier ./{js,lib}",
+    "prettier:write": "prettier --write ./js ./lib",
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geobretagne/mviewerstudio.git"
+  },
+  "author": "",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/geobretagne/mviewerstudio/issues"
+  },
+  "homepage": "https://github.com/geobretagne/mviewerstudio#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-tagsinput": "^0.7.1",
+    "jquery": "^1.12",
+    "lib": "^4.1.2",
+    "ol": "^5.3.3",
+    "papaparse": "^5.1.1",
+    "proj4": "^2.6.0",
+    "sortablejs": "^1.10.2"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "prettier": "2.0.2"
+  }
+}
