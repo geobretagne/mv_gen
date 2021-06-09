@@ -63,11 +63,11 @@ $(document).ready(function(){
 								var url = mv.xml;
 								var themeid = mv.id;
 								if (url && themeid) {
-									html.push(['<div class="checkbox list-group-item">',
-										'<label for="import-theme-'+themeid+id+'">',
+									html.push(['<div class="card checkbox-cards mx-2 px-3 py-1">',
+										'<div class=""><label for="import-theme-'+themeid+id+'">',
 											'<input type="checkbox" data-url="'+url+'" data-theme-label="'+mv.title+'" data-theme-id="'+themeid+'" name="checkboxes" id="import-theme-'+themeid+id+'">',
 											mv.title,
-										'</label></div>'].join(""));
+										'</label></div></div>'].join(""));
 								}
 							}
 						});
@@ -212,7 +212,7 @@ var newConfiguration = function () {
     });
 
     $("#opt-style").val("css/themes/default.css").trigger("change");
-    $("#panel-theme").hide();
+    $("#card-theme-container").hide();
 
     map.getView().setCenter(_conf.map.center);
     map.getView().setZoom(_conf.map.zoom);
@@ -238,7 +238,7 @@ var loadLayers = function (themeid) {
 };
 
 var sortableLayerList = Sortable.create(document.getElementById('themeLayers'), {
-    handle: '.glyphicon-move',
+    handle: '.icon-arrows-alt',
     animation: 150,
     ghostClass: 'ghost',
     onEnd: function (evt) {
@@ -260,7 +260,7 @@ var deleteLayerItem = function (btn) {
 };
 
 var sortableThemeList = Sortable.create(document.getElementById('themes-list'), {
-    handle: '.glyphicon-move',
+    handle: '.icon-arrows-alt',
     animation: 150,
     ghostClass: 'ghost',
     onEnd: function (evt) {
@@ -296,13 +296,13 @@ var addLayer = function (title, layerid) {
         saveTheme();
     }
     var item = $("#themeLayers").append([
-        '<div class="list-group-item layers-list-item" data-layerid="'+layerid+'">',
-            '<span class="glyphicon glyphicon-move" aria-hidden="true"></span>',
-            '<div class="pull-right btn-group" role="group">',
-                '<button class="btn btn-sm btn-warning" onclick="editLayer(this);"><span class="layer-edit glyphicon glyphicon-pencil" title="Editer cette couche"></span></button>',
-                '<button class="btn btn-sm btn-warning" onclick="deleteLayerItem(this);"><span class="layer-remove glyphicon glyphicon-remove" title="Supprimer"></span></button>',
+        '<div class="list-group-item layers-list-item " data-layerid="'+layerid+'">',
+            '<span class="icon-arrows-alt col--1" aria-hidden="true"></span>',
+            '<div class="pull-right btn-group col-2" role="group">',
+                '<button class="btn btn-sm btn-warning" onclick="editLayer(this);"><span class="layer-edit icon-pencil" title="Editer cette couche"></span></button>',
+                '<button class="btn btn-sm btn-warning" onclick="deleteLayerItem(this);"><span class="layer-remove icon-trash" title="Supprimer"></span></button>',
             '</div>',
-            '<span class="layer-name">'+title+'</span>',
+            '<span class="layer-name col-8">'+title+'</span>',
         '</div>'].join(""));
 
      if (title === 'Nouvelle couche') {
@@ -335,7 +335,7 @@ var importThemes = function () {
 };
 
 var addTheme = function (title, collapsed, themeid, icon, url) {
-    if ($("#panel-theme").is(":visible")) {
+    if ($("#card-theme-container").is(":visible")) {
         alert("Enregistrez d'abord votre thématique.");
         return;
     }
@@ -343,21 +343,21 @@ var addTheme = function (title, collapsed, themeid, icon, url) {
         //external theme
          $("#themes-list").append([
         '<div class="list-group-item list-group-item-info themes-list-item" data-theme-url="'+url+'" data-theme="'+title+'" data-themeid="'+themeid+'" data-theme-collapsed="'+collapsed+'" data-theme-icon="'+icon+'">',
-            '<span class="glyphicon glyphicon-move" aria-hidden="true"></span>',
+            '<span class="icon-arrows-alt col-1" aria-hidden="true"></span>',
             '<div class="pull-right btn-group" role="group">',
-                '<button class="btn btn-sm btn-warning" onclick="deleteThemeItem(this);" ><span class="theme-remove glyphicon glyphicon-remove" title="Supprimer"></span></button>',
+                '<button class="btn btn-sm btn-warning" onclick="deleteThemeItem(this);" ><span class="theme-remove icon-trash" title="Supprimer"></span></button>',
             '</div>',
-            '<span class="theme-name">'+title+'</span><span class="label label-success">Ext.</span>',
+            '<span class="theme-name col-8">'+title+'</span><span class="label label-success">Ext.</span>',
         '</div>'].join(""));
     } else {
          $("#themes-list").append([
         '<div class="list-group-item themes-list-item" data-theme="'+title+'" data-themeid="'+themeid+'" data-theme-collapsed="'+collapsed+'" data-theme-icon="'+icon+'">',
-            '<span class="glyphicon glyphicon-move" aria-hidden="true"></span>',
-            '<div class="pull-right btn-group" role="group">',
-                '<button class="btn btn-sm btn-warning" onclick="editTheme(this);"><span class="theme-edit glyphicon glyphicon-pencil" title="Editer ce thème"></span></button>',
-                '<button class="btn btn-sm btn-warning" onclick="deleteThemeItem(this);" ><span class="theme-remove glyphicon glyphicon-remove" title="Supprimer"></span></button>',
+            '<span class="icon-arrows-alt col-1" aria-hidden="true"></span>',
+            '<div class="pull-right btn-group " role="group">',
+                '<button class="btn btn-sm btn-warning" onclick="editTheme(this);"><span class="theme-edit icon-pencil" title="Editer ce thème"></span></button>',
+                '<button class="btn btn-sm btn-warning" onclick="deleteThemeItem(this);" ><span class="theme-remove icon-trash" title="Supprimer"></span></button>',
             '</div>',
-            '<span class="theme-name">'+title+'</span><span class="label label-info">0</span>',
+            '<span class="theme-name col-8">'+title+'</span><span class="label label-info col-1">0</span>',
         '</div>'].join(""));
     }
 
@@ -384,7 +384,7 @@ var editTheme = function (item) {
     var icon = $(item).parent().parent().attr("data-theme-icon");
     if (icon === "undefined") icon = 'fas fa-caret-right';
 
-    $("#panel-theme").show();
+    $("#card-theme-container").show();
     $("#theme-edit-title").val(title);
     $("#theme-edit-collapsed").prop('checked', collapsed);
     $("#theme-edit").attr("data-themeid", themeid);
@@ -399,14 +399,14 @@ var editTheme = function (item) {
 };
 
 var saveTheme = function () {
-    //get active item in left panel
+    //get active item in left card
     var theme = $("#themes-list .active");
-    //get edited values (right panel)
+    //get edited values (right card)
     var title = $("#theme-edit-title").val();
     var themeid = $("#theme-edit").attr("data-themeid");
     var collapsed = !$("#theme-edit-collapsed").prop('checked');
     var icon = $.trim($("#theme-pick-icon").val());
-    //update values in left panel
+    //update values in left card
     theme.attr("data-theme", title);
     theme.attr("data-theme-collapsed", collapsed);
     theme.attr("data-theme-icon", icon);
@@ -415,7 +415,7 @@ var saveTheme = function () {
     theme.find(".label").text(nb_layers);
     //deactivate theme edition
     $("#themes-list .list-group-item").removeClass("active");
-    $("#panel-theme").hide();
+    $("#card-theme-container").hide();
 
     //save theme locally
     config.themes[themeid].title = title;
@@ -425,7 +425,7 @@ var saveTheme = function () {
 };
 
 var deleteTheme = function (themeid) {
-    $("#panel-theme").hide();
+    $("#card-theme-container").hide();
     delete config.themes[themeid];
 };
 
@@ -794,3 +794,22 @@ $(".checkedurl").change(mv.checkURL);
 $("#mod-importfile").on('shown.bs.modal', function () {
     mv.getListeApplications();
 });
+
+
+/* SIDE PANNEL */
+
+function openOptions() {
+    document.getElementById("options-menu").style.width = "250px";
+    document.getElementById("tab-content").style.marginLeft = "250px";
+    document.getElementById("closeSideOptions").style.visibility = "visible";
+    document.getElementById("card-theme-container").style.marginLeft ="250px";
+};
+  
+function closeOptions() {
+    document.getElementById("options-menu").style.width = "55px";
+    document.getElementById("tab-content").style.marginLeft= "55px";
+    document.getElementById("closeSideOptions").style.visibility = "hidden";
+    document.getElementById("card-theme-container").style.marginLeft ="55px";
+};
+
+

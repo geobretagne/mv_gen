@@ -4,994 +4,1046 @@
     <title>mviewer studio</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="lib/openlayers/5.3/ol.css" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="lib/Sortable.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.6.3/papaparse.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css"/>
-    <link rel="stylesheet" href="css/mviewerstudio.css" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.6.3/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css"/>
     <link rel="stylesheet" href="lib/icon-picker/icon-picker.css" type="text/css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js"></script>
     <script type="text/javascript" src="lib/openlayers/5.3/ol.js"></script>
     <script src="lib/ogc.js"></script>
     <script src="lib/mv.js"></script>
+    <link rel="stylesheet" href="fontello/css/fontello.css" type="text/css">
+    <link rel="stylesheet" href="css/mviewerstudio.css" type="text/css">
 </head>
 
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a id="studio-title" class="navbar-brand" href="#">mviewer studio</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            <p class="navbar-text" id="user_connected">Non connecté</p>
-            <li><a role="button" data-toggle="modal" data-target="#mod-importfile" href="#">
-                <span role="button" class="glyphicon glyphicon-import"></span> Charger</a></li>
-            <li><a role="button" onclick="saveApplicationParameters(0);" href="#"><span
-                    class="glyphicon glyphicon-floppy-disk"></span> Sauvegarder</a></li>
-            <li><a role="button" onclick="saveApplicationParameters(1);" href="#"><span
-                    class="glyphicon glyphicon-download"></span> Télécharger</a></li>
-            <li><a role="button" onclick="saveApplicationParameters(2);" href="#"><span
-                    class="glyphicon glyphicon-globe"></span> Prévisualiser</a></li>
-            <li id="menu_user_logout"><a role="button" href="./logout"><span
-                    class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
-        </ul>
-    </div>
-</nav>
-<div class="container">
-    <div id="content">
+<div class="fixedNavbar">
+    <nav class="navbar navbar-dark navbar-expand-lg navbar-inverse">
+        
+
+            <div class="navbar-header">
+                <a id="studio-title" class="navbar-brand" href="#">mviewer studio</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse navbar-right" id="navbarSupportedContent">
+                <ul class="nav navbar-nav ">
+                    <p class="navbar-text" id="user_connected">Non connecté</p>
+                    <li><a role="button" data-toggle="modal" data-target="#mod-importfile" href="#">
+                        <span role="button" class="icon-arrows-cw"></span> Charger</a></li>
+                    <li><a role="button" onclick="saveApplicationParameters(0);" href="#"><span
+                            class="icon-floppy"></span> Sauvegarder</a></li>
+                    <li><a role="button" onclick="saveApplicationParameters(1);" href="#"><span
+                            class="icon-download"></span> Télécharger</a></li>
+                    <li><a role="button" onclick="saveApplicationParameters(2);" href="#"><span
+                            class="icon-eye"></span> Prévisualiser</a></li>
+                    <li id="menu_user_logout"><a role="button" href="./logout"><span
+                            class="icon-power-off"></span> Déconnexion</a></li>
+                </ul>
+            </div>
+
+    </nav>
+
+    <div class="ApplicationTitle">
         <!-- Title-->
-        <form class="form-horizontal">
-            <fieldset>
-                <div class="form-group">
-                    <label class="col-md-5 control-label" for="opt-title">Titre de l'application</label>
-                    <div class="col-md-5">
-                        <input id="opt-title" name="textinput" type="text" placeholder="Kartenn"
-                               class="form-control input-md">
+        <div class="container text-center">
+            <form class="form-horizontal">
+                <fieldset>
+                    <div class=" row">
+                        <label class="col-xs-4 col-sm-3 col-md-2 control-label" for="opt-title">Titre de l'application</label>
+                        <div class="col-xs-8 col-sm-9 col-md-10">
+                            <input id="opt-title" name="textinput" type="text" placeholder="Kartenn"
+                                class="form-control input-md">
+                        </div>
                     </div>
-                </div>
-            </fieldset>
-        </form>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
 
+<div>
+    <div id="options-menu">
+        <i class="icon-cog-alt" onclick="openOptions()"></i>
+        <a href="javascript:void(0)" class="closebtn" id="closeSideOptions" onclick="closeOptions()">&times;</a>
         <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-            <li class="active"><a href="#application-config" data-toggle="tab">Application</a></li>
-            <li><a href="#themes-config" data-toggle="tab">Thématiques & données</a></li>
-            <li><a href="#backgroundlayers-config" data-toggle="tab">Couches de fond</a></li>
-            <li><a href="#search-config" data-toggle="tab">Recherche</a></li>
+            <li class="active">
+                <a href="#application-config" data-toggle="tab">
+                    <i class="icon-th-list"></i>
+                    <span class="tabsLink">Application</span> 
+                </a>
+            </li>
+            <li>
+                <a href="#themes-config" data-toggle="tab">
+                    <i class="icon-brush"></i>
+                    <span class="tabsLink">Thématiques & données</span>
+                </a>
+            </li>
+            <li>
+                <a href="#backgroundlayers-config" data-toggle="tab">
+                    <i class="icon-globe"></i>
+                    <span class="tabsLink">Couches de fond</span>
+                </a>
+            </li>
+            <li>
+                <a href="#search-config" data-toggle="tab">
+                    <i class="icon-search"></i>
+                    <span class="tabsLink">Recherche</span>
+                </a>
+            </li>
         </ul>
-        <div class="tab-content">
-            <div class="tab-pane active" id="application-config">
+        
+    </div>
+</div>
 
-                <div class="row">
 
-                    <div class="col-md-7">
-                        <form class="form-horizontal">
-                            <fieldset>
-                                <!-- logo-->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="opt-logo">URL du logo</label>
-                                    <div class="col-md-8">
-                                        <input id="opt-logo" name="textinput" type="text"
-                                               class="form-control input-md checkedurl"
-                                               placeholder="https://geobretagne.fr/pub/logo/region-bretagne.jpg">
-                                    </div>
-                                </div>
-
-                                <!-- help-->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="opt-help">Page d'aide (html)</label>
-                                    <div class="col-md-8">
-                                        <input id="opt-help" name="textinput" type="text"
-                                               class="form-control input-md checkedurl" placeholder="Ex: mviewer_help.html">
-                                    </div>
-                                </div>
-
-                                <!--style-->
-                                <div class="form-group">
-                                    <label class="control-label col-md-4" for="frm-style">Style</label>
-                                    <div class="col-md-8">
-                                        <select id="opt-style" name="style" class="form-control default"
-                                                onchange="updateTheme(this);">
-                                            <option class="alizarin" value="css/themes/alizarin.css">alizarin</option>
-                                            <option class="blue" value="css/themes/blue.css">blue</option>
-                                            <option class="default" selected value="css/themes/default.css">default</option>
-                                            <option class="nephritis" value="css/themes/nephritis.css">nephritis</option>
-                                            <option class="ripe_lemon" value="css/themes/ripe_lemon.css">ripe_lemon</option>
-                                            <option class="amethyst" value="css/themes/amethyst.css">amethyst</option>
-                                            <option class="carrot" value="css/themes/carrot.css">carrot</option>
-                                            <option class="green" value="css/themes/green.css">green</option>
-                                            <option class="peter_river" value="css/themes/peter_river.css">peter_river</option>
-                                            <option class="black" value="css/themes/black.css">black</option>
-                                            <option class="chambray" value="css/themes/chambray.css">chambray</option>
-                                            <option class="green_sea" value="css/themes/green_sea.css">green_sea</option>
-                                            <option class="pink" value="css/themes/pink.css">pink</option>
-                                            <option class="wet_asphalt" value="css/themes/wet_asphalt.css">wet_asphalt</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="checkboxes">Options</label>
-                                    <div class="col-md-8">
-                                        <div class="checkbox">
-                                            <label for="opt-measuretools">
-                                                <input type="checkbox" name="checkboxes" id="opt-measuretools">
-                                                Outils de mesures
-                                            </label>
-                                        </div>
-
-                                        <div class="checkbox">
-                                            <label for="opt-exportpng">
-                                                <input type="checkbox" name="checkboxes" id="opt-exportpng">
-                                                Export de la carte au format png
-                                            </label>
-                                        </div>
-
-                                        <div class="checkbox">
-                                            <label for="opt-showhelp">
-                                                <input type="checkbox" name="checkboxes" id="opt-showhelp">
-                                                Afficher l'aide au démarrage
-                                            </label>
-                                        </div>
-
-                                        <div class="checkbox">
-                                            <label for="opt-coordinates">
-                                                <input type="checkbox" name="checkboxes" id="opt-coordinates">
-                                                Affichage des coordonnées au click
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label for="opt-togglealllayersfromtheme">
-                                                <input type="checkbox" name="checkboxes" id="opt-togglealllayersfromtheme">
-                                                Afficher/masquer toutes les données d'une thématique en un clic
-                                            </label>
+<div class="container-fluid">
+    <div class="">
+        <div id="content">
+            <div class="tab-content" id="tab-content">
+                <div class="tab-pane active" id="application-config">
+                    <h3>Application</h3>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <!-- logo-->
+                                    <div class="form-group row">
+                                        <label class="col-md-3 control-label" for="opt-logo">URL du logo</label>
+                                        <div class="col-md-8">
+                                            <input id="opt-logo" name="textinput" type="text"
+                                                class="form-control input-md checkedurl"
+                                                placeholder="https://geobretagne.fr/pub/logo/region-bretagne.jpg">
                                         </div>
                                     </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                    <div class="col-md-5">
-                        <form class="form-horizontal">
-                            <fieldset>
-                                <!-- Map -->
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <div id="map" class="map"></div>
+
+                                    <!-- help-->
+                                    <div class="form-group row">
+                                        <label class="col-md-3 control-label" for="opt-help">Page d'aide (html)</label>
+                                        <div class="col-md-8">
+                                            <input id="opt-help" name="textinput" type="text"
+                                                class="form-control input-md checkedurl" placeholder="Ex: mviewer_help.html">
+                                        </div>
                                     </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
 
-                </div>
-            </div>
+                                    <!--style-->
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-3" for="frm-style">Style</label>
+                                        <div class="col-md-8">
+                                            <select id="opt-style" name="style" class="form-control default"
+                                                    onchange="updateTheme(this);">
+                                                <option class="alizarin" value="css/themes/alizarin.css">alizarin</option>
+                                                <option class="blue" value="css/themes/blue.css">blue</option>
+                                                <option class="default" selected value="css/themes/default.css">default</option>
+                                                <option class="nephritis" value="css/themes/nephritis.css">nephritis</option>
+                                                <option class="ripe_lemon" value="css/themes/ripe_lemon.css">ripe_lemon</option>
+                                                <option class="amethyst" value="css/themes/amethyst.css">amethyst</option>
+                                                <option class="carrot" value="css/themes/carrot.css">carrot</option>
+                                                <option class="green" value="css/themes/green.css">green</option>
+                                                <option class="peter_river" value="css/themes/peter_river.css">peter_river</option>
+                                                <option class="black" value="css/themes/black.css">black</option>
+                                                <option class="chambray" value="css/themes/chambray.css">chambray</option>
+                                                <option class="green_sea" value="css/themes/green_sea.css">green_sea</option>
+                                                <option class="pink" value="css/themes/pink.css">pink</option>
+                                                <option class="wet_asphalt" value="css/themes/wet_asphalt.css">wet_asphalt</option>
+                                            </select>
+                                        </div>
+                                    </div>
 
-            <div class="tab-pane" id="themes-config">
-                <div class="well">
-                    <h4>Sélection, paramétrage et organisation des données</h4>
-                    <p>Dans cette section, créer une ou plusieurs thématiques que vous peuplerez avec des données
-                        provenant de différentes plateformes. Il également est possible d'importer des thématiques externes</p>
-                </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 control-label" for="checkboxes">Options</label>
+                                        <div class="col-md-8">
+                                            <div class="checkbox">
+                                                <label for="opt-measuretools">
+                                                    <input class="" type="checkbox" name="checkboxes" id="opt-measuretools">
+                                                    Outils de mesures
+                                                </label>
+                                            </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <!-- List with handle -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Panneau des thématiques</div>
-                            <div class="panel-body">
-                                <div id="themes-list" class="list-group"></div>
-                                <div class="btn-group">
-                                    <button id="btn-addTheme" title="Créer une nouvelle thématique" class="btn btn-primary"
-                                            onclick="addTheme('Nouvelle thématique', true, createId('theme'));">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span> Créer
-                                    </button>
-                                    <button id="btn-importTheme" title="Importer une thématique depuis un autre mviewer" class="btn btn-success" onclick="$('#mod-themesview input').prop('checked', false);" data-toggle="modal" data-target="#mod-themesview">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span> Importer
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="panel-footer">
-                                <div class="checkbox">
-                                    <label for="opt-mini">
-                                        <input type="checkbox" name="checkboxes" id="opt-mini">
-                                        Option d'affichage : réduire le panneau des thématiques au démarrage
-                                    </label>
-                                </div>
-                            </div>
+                                            <div class="checkbox">
+                                                <label for="opt-exportpng">
+                                                    <input class="" type="checkbox" name="checkboxes" id="opt-exportpng">
+                                                    Export de la carte au format png
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label for="opt-showhelp">
+                                                    <input class="" type="checkbox" name="checkboxes" id="opt-showhelp">
+                                                    Afficher l'aide au démarrage
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label for="opt-coordinates">
+                                                    <input class="" type="checkbox" name="checkboxes" id="opt-coordinates">
+                                                    Affichage des coordonnées au click
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label for="opt-togglealllayersfromtheme">
+                                                    <input class="" type="checkbox" name="checkboxes" id="opt-togglealllayersfromtheme">
+                                                    Afficher/masquer toutes les données d'une thématique en un click
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="panel-theme" class="panel panel-info" style="display: none;">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Paramétrage de la Thématique sélectionnée</h3>
-                            </div>
-                            <div class="panel-body" id="theme-edit" data-themeid="">
-                                <div class="input-group">
-                                    <span class="input-group-addon">Nom</span>
-                                    <input type="text" id="theme-edit-title" class="form-control" placeholder="Titre"
-                                           aria-describedby="basic-addon1">
-                                </div>
-                                <div class="checkbox">
-                                    <label for="theme-edit-collapsed">
-                                        <input type="checkbox" name="checkboxes" id="theme-edit-collapsed" value="0">
-                                        Déroulée par défaut
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <label class="settinglabel">Icône</label>
-                                    <span class="selected-icon"></span>
-                                    <input type="text" class="icon-class-input" id="theme-pick-icon" />
-                                    <button type="button" class="btn btn-primary picker-button">Choisir une icône</button>
-                                </div>
-                                <!-- List with handle -->
-                                <div id="themeLayers" class="list-group"></div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="pull-right">
-                                            <button id="btn-addLayer" class="btn btn btn-primary"
-                                                    onclick="addLayer('Nouvelle couche');">
-                                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                                Ajouter des données
-                                            </button>
+                        <div class="col-md-5">
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <!-- Map -->
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <p>Utiliser la carte pour séléctionner le zoom de base</p>
+                                            <div id="map" class="map"></div>
                                         </div>
                                     </div>
+                                </fieldset>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="themes-config">
+                    <h3>Thématiques & données</h3>
+                    <div>
+                        <h4>Sélection, paramétrage et organisation des données</h4>
+                        <p>Dans cette section, créer une ou plusieurs thématiques que vous peuplerez avec des données
+                            provenant de différentes plateformes. Il également est possible d'importer des thématiques externes</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- List with handle -->
+                            <div class="card card-default">
+                                <div class="card-heading">Panneau des thématiques</div>
+                                <div class="card-body">
+                                    <div id="themes-list" class="list-group"></div>
+                                    <div class="btn-group">
+                                        <button id="btn-addTheme" title="Créer une nouvelle thématique" class="btn btn-primary"
+                                                onclick="addTheme('Nouvelle thématique', true, createId('theme'));">
+                                            <span class="icon-plus" aria-hidden="true"> </span> Créer
+                                        </button>
+                                        <button id="btn-importTheme" title="Importer une thématique depuis un autre mviewer" class="btn btn-success" onclick="$('#mod-themesview input').prop('checked', false);" data-toggle="modal" data-target="#mod-themesview">
+                                            <span class="icon-pencil" aria-hidden="true"> </span> Importer
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="panel-footer">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="pull-right">
-                                            <button id="btn-saveTheme" class="btn btn btn-success"
-                                                    onclick="saveTheme();">
-                                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Ok
-                                            </button>
-                                            &nbsp;&nbsp;
-                                            <button class="btn btn btn-default" onclick="$('#panel-theme').hide();">
-                                                <span class="glyphicon glyphicon-remove"></span> Annuler
-                                            </button>
-                                        </div>
+                                <div class="card-footer">
+                                    <div class="checkbox">
+                                        <label for="opt-mini">
+                                            <input class="" type="checkbox" name="checkboxes" id="opt-mini">
+                                            Option d'affichage : réduire le panneau des thématiques au démarrage
+                                        </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane" id="backgroundlayers-config">
-                <div class="row">
-                    <div class="col-sm-6 col-md-6">
-                    </div>
-                    <div class="col-sm-3 col-md-3">
-                        <div class="form-group">
-                            <label class="control-label" for="frm-bl-mode">Mode d'affichage</label>
-                            <select id="frm-bl-mode" name="bl-mode" class="form-control">
-                                <option value="default">normal</option>
-                                <option value="gallery">gallerie</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-3">
-                        <div class="form-group">
-                            <label class="control-label" for="frm-bl-mode">Fond affiché au démarrage</label>
-                            <select id="frm-bl-visible" name="bl-visible" class="form-control"
-                                    onchange="mv.changeVisibleBaseLayer(this.value)"></select>
-                        </div>
-                    </div>
-                </div>
-                <div id="frm-bl"></div>
-            </div>
 
-            <div class="tab-pane" id="search-config">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h3 class="panel-title">Recherche d'entités</h3></div>
-                    <div class="panel-body">
-                        <div class="form-group">
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="opt-searchfeatures" required>
-                                <label class="form-check-label" for="opt-searchfeatures">
-                                Activer la recherche d'entités
-                                </label>
-                            </div>
-                        </div>
-                        <p>
-                            La recherche d'entités peut être activée sur les couches de type geojson.
-                        </p>
-                        <p>
-                            Cette fonctionnalité est également activable pour les couches de type WMS à la condition que les
-                            entités qui composent cette couche soient également indexées par Elasticsearch.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h3 class="panel-title">Recherche d'adresses</h3></div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label class="control-label col-md-4" for="frm-searchlocalities">Service utilisé</label>
-                            <select id="frm-searchlocalities" name="searchlocalities" class="form-control"
-                                    onchange="mv.changeSearchLocalities(this.value)" style="width:auto;">
-                                <option value="false">Non utilisé</option>
-                                <option value="ban">Base adresse Nationale</option>
-                                <option value="geoportail">Géoportail</option>
-                            </select>
-                        </div>
-
-                        <form id="searchlocalities_options" class="form-horizontal">
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="opt-searchlocalities-url">URL</label>
-                                <div class="col-md-4">
-                                    <input id="opt-searchlocalities-url" type="text" placeholder="Url"
-                                           class="form-control input-md">
+                        <div id="card-theme-container" class="modalParemétrage">
+                            <div id="card-theme" class="card card-info">
+                                <div class="card-heading">
+                                    <h3 class="card-title">Paramétrage de la Thématique sélectionnée</h3>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label"
-                                       for="opt-searchlocalities-attribution">Attribution</label>
-                                <div class="col-md-4">
-                                    <input id="opt-searchlocalities-attribution" type="text"
-                                           placeholder="Attribution du service" class="form-control input-md">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Elasticsearch</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label class="control-label col-md-4" for="frm-globalsearch">Options</label>
-                            <select id="frm-globalsearch" name="globalsearch" class="form-control"
-                                    onchange="mv.changeGlobalSearch(this.value)" style="width:auto;">
-                                <option value="false">Non utilisé</option>
-                                <option value="elasticsearch">Activé</option>
-                            </select>
-                        </div>
-
-                        <form id="searchelasticsearch_options" class="form-horizontal">
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="opt-elasticsearch-url">URL
-                                    Elasticsearch</label>
-                                <div class="col-md-4">
-                                    <input id="opt-elasticsearch-url" type="text" placeholder="Url Elasticsearch"
-                                           class="form-control input-md">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="opt-elasticsearch-geometryfield">geometryfield</label>
-                                <div class="col-md-4">
-                                    <input id="opt-elasticsearch-geometryfield" type="text" placeholder="geometryfield"
-                                           class="form-control input-md">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="opt-elasticsearch-linkid">linkid</label>
-                                <div class="col-md-4">
-                                    <input id="opt-elasticsearch-linkid" type="text" placeholder="linkid"
-                                           class="form-control input-md">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="opt-elasticsearch-doctypes">doctypes</label>
-                                <div class="col-md-4">
-                                    <input id="opt-elasticsearch-doctypes" type="text" placeholder="doctypes"
-                                           class="form-control input-md">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-4" for="opt-elasticsearch-querymode">Mode</label>
-                                <select id="opt-elasticsearch-querymode" class="form-control" style="width:auto;"
-                                        onchange="">
-                                    <option value="match">match</option>
-                                    <option value="term">term</option>
-                                    <option value="phrase">phrase</option>
-                                </select>
-                            </div>
-
-                            <div class="checkbox">
-                                <label for="opt-elasticsearch-bbox">
-                                    <input type="checkbox" id="opt-elasticsearch-bbox" value="0">
-                                    Rechercher dans l'emprise de la carte
-                                </label>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-4" for="opt-elasticsearch-version">Version</label>
-                                <select id="opt-elasticsearch-version" class="form-control" style="width:auto;"
-                                        onchange="">
-                                    <option value="current">current</option>
-                                    <option value="1.4">1.4</option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- tab-content-->
-
-        <!-- Modal user group selection-->
-        <div class="modal fade" id="mod-groupselection" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Sélectionner un groupe</h4>
-                        <p>Vous appartenez à plusieurs groupes. Vous devez en sélectionner un pour créer ou enregistrer une carte associée à celui-ci.
-                    </div>
-                    <div class="modal-body">
-                        <div class="list-group" id="user_group_list"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal file import-->
-        <div class="modal fade" id="mod-importfile" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Charger un fichier de configuration</h4>
-                    </div>
-                    <div class="modal-body">
-
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#serverside" aria-controls="serverside" role="tab" data-toggle="tab">Localisé sur le serveur</a></li>
-                            <li role="presentation"><a href="#local" aria-controls="local" role="tab" data-toggle="tab">Sur votre ordinateur</a></li>
-                        </ul>
-
-                        <br>
-
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane" id="local">
-                                <div class="alert alert-info">
-                                    <label>Choisissez un fichier</label>
+                                <div class="card-body" id="theme-edit" data-themeid="">
                                     <div class="input-group">
-                                        <input type="text" id="subfile" class="form-control">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary" type="button"
-                                                    onclick="$('#filebutton').click();">
-                                                <span class="glyphicon glyphicon-folder-open"></span>
-                                                &nbsp;Parcourir...
-                                            </button>
-                                        </span>
+                                        <span class="input-group-addon">Nom</span>
+                                        <input type="text" id="theme-edit-title" class="form-control" placeholder="Titre"
+                                            aria-describedby="basic-addon1">
                                     </div>
-                                    <input type="file" name="filebutton" style="display: none;" id="filebutton">
+                                    <div class="checkbox">
+                                        <label for="theme-edit-collapsed">
+                                            <input class="" type="checkbox" name="checkboxes" id="theme-edit-collapsed" value="0">
+                                            Déroulée par défaut
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="settinglabel">Icône</label>
+                                        <span class="selected-icon"></span>
+                                        <input type="text" class="icon-class-input" id="theme-pick-icon" />
+                                        <button type="button" class="btn btn-primary picker-button">Choisir une icône</button>
+                                    </div>
+                                    <!-- List with handle -->
+                                    <div id="themeLayers" class="list-group"></div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-right">
+                                                <button id="btn-addLayer" class="btn btn btn-primary"
+                                                        onclick="addLayer('Nouvelle couche');">
+                                                    <span class="icon-plus" aria-hidden="true"></span>
+                                                    Ajouter des données
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane active" id="serverside">
-                                <form class="form-inline">
-                                    <div class="form-group" style="display: none;">
-                                        <label for="apps_group_list">Groupe</label>
-                                        <select class="form-control" id="apps_group_list" onchange="mv.filterApplications()"></select>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-right">
+                                                <button id="btn-saveTheme" class="btn btn btn-success"
+                                                        onclick="saveTheme();">
+                                                    <span class="icon-ok" aria-hidden="true"></span> Ok
+                                                </button>
+                                                &nbsp;&nbsp;
+                                                <button class="btn btn btn-secondary" onclick="$('#card-theme-container').hide();">
+                                                    <span class="icon-cancel"></span> Annuler
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group" style="display: none;">
-                                        <label for="apps_creator_list">Auteur</label>
-                                        <select class="form-control" id="apps_creator_list" onchange="mv.filterApplications()"></select>
-                                    </div>
-                                </form>
-                                <br>
-                                <div class="list-group" id="liste_applications"></div>
-                                <div class="text-right">
-                                    <button type="button" class="btn btn-danger" onclick="deleteMyApplications();">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                        &nbsp;Supprimer toutes mes applications
-                                    </button>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+                <div class="tab-pane" id="backgroundlayers-config">
+                    <h3>Couches de fond</h3>
+                    <div class="row">
+                        <div class="col-sm-4 ">
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label" for="frm-bl-mode">Mode d'affichage</label>
+                                <select id="frm-bl-mode" name="bl-mode" class="form-control">
+                                    <option value="default">normal</option>
+                                    <option value="gallery">gallerie</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label" for="frm-bl-mode">Fond affiché au démarrage</label>
+                                <select id="frm-bl-visible" name="bl-visible" class="form-control"
+                                        onchange="mv.changeVisibleBaseLayer(this.value)"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="frm-bl"></div>
+                </div>
+
+                <div class="tab-pane" id="search-config">
+                    <h3>Recherche</h3>
+                    <div class="card card-default">
+                        <div class="card-heading"><h5 class="card-title">Recherche d'entités</h5></div>
+                        <div class="card-body">
+                            <div class="form-group">
+
+                                <div class="form-check">
+                                    <input class="form-check-input " type="checkbox" value="" id="opt-searchfeatures" required>
+                                    <label class="form-check-label" for="opt-searchfeatures">
+                                    Activer la recherche d'entités
+                                    </label>
+                                </div>
+                            </div>
+                            <p>
+                                La recherche d'entités peut être activée sur les couches de type geojson.
+                            </p>
+                            <p>
+                                Cette fonctionnalité est également activable pour les couches de type WMS à la condition que les
+                                entités qui composent cette couche soient également indexées par Elasticsearch.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card card-default">
+                        <div class="card-heading"><h5 class="card-title">Recherche d'adresses</h5></div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="frm-searchlocalities">Service utilisé</label>
+                                <select id="frm-searchlocalities" name="searchlocalities" class="col-10 form-control input-md checkedurl"
+                                        onchange="mv.changeSearchLocalities(this.value)" style="width:auto;">
+                                    <option value="false">Non utilisé</option>
+                                    <option value="ban">Base adresse Nationale</option>
+                                    <option value="geoportail">Géoportail</option>
+                                </select>
+                            </div>
+
+                            <form id="searchlocalities_options" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="opt-searchlocalities-url">URL</label>
+                                    <div class="col-12 col-md-8">
+                                        <input id="opt-searchlocalities-url" type="text" placeholder="Url"
+                                            class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"
+                                        for="opt-searchlocalities-attribution">Attribution</label>
+                                    <div class="col-md-8">
+                                        <input id="opt-searchlocalities-attribution" type="text"
+                                            placeholder="Attribution du service" class="form-control input-md">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card card-default">
+                        <div class="card-heading">
+                            <h5 class="card-title">Elasticsearch</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="frm-globalsearch">Options</label>
+                                <select class="col-md-10 form-control input-md checkedurl" id="frm-globalsearch" name="globalsearch" class="form-control"
+                                        onchange="mv.changeGlobalSearch(this.value)" style="width:auto;">
+                                    <option value="false">Non utilisé</option>
+                                    <option value="elasticsearch">Activé</option>
+                                </select>
+                            </div>
+
+                            <form id="searchelasticsearch_options" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="opt-elasticsearch-url">URL
+                                        Elasticsearch</label>
+                                    <div class="col-md-4">
+                                        <input id="opt-elasticsearch-url" type="text" placeholder="Url Elasticsearch"
+                                            class="form-control input-md">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="opt-elasticsearch-geometryfield">geometryfield</label>
+                                    <div class="col-md-12">
+                                        <input id="opt-elasticsearch-geometryfield" type="text" placeholder="geometryfield"
+                                            class="form-control input-md">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="opt-elasticsearch-linkid">linkid</label>
+                                    <div class="col-md-12">
+                                        <input id="opt-elasticsearch-linkid" type="text" placeholder="linkid"
+                                            class="form-control input-md">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="opt-elasticsearch-doctypes">doctypes</label>
+                                    <div class="col-md-12">
+                                        <input id="opt-elasticsearch-doctypes" type="text" placeholder="doctypes"
+                                            class="form-control input-md">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-4" for="opt-elasticsearch-querymode">Mode</label>
+                                    <select id="opt-elasticsearch-querymode" class="form-control col-md-12" style="width:auto;"
+                                            onchange="">
+                                        <option value="match">match</option>
+                                        <option value="term">term</option>
+                                        <option value="phrase">phrase</option>
+                                    </select>
+                                </div>
+
+                                <div class="checkbox">
+                                    <label for="opt-elasticsearch-bbox">
+                                        <input class="" type="checkbox" id="opt-elasticsearch-bbox" value="0">
+                                        Rechercher dans l'emprise de la carte
+                                    </label>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-4" for="opt-elasticsearch-version">Version</label>
+                                    <select id="opt-elasticsearch-version" class="form-control col-md-12" style="width:auto;"
+                                            onchange="">
+                                        <option value="current">current</option>
+                                        <option value="1.4">1.4</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- tab-content-->
+
+            <!-- Modal user group selection-->
+            <div class="modal fade" id="mod-groupselection" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Sélectionner un groupe</h4>
+                            <p>Vous appartenez à plusieurs groupes. Vous devez en sélectionner un pour créer ou enregistrer une carte associée à celui-ci.
+                        </div>
+                        <div class="modal-body">
+                            <div class="list-group" id="user_group_list"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Modal layer options-->
-        <div class="modal fade" id="mod-layerOptions" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Edition de couche</h4>
-                    </div>
-                    <div class="modal-body">
-                        <ul class="nav nav-tabs" role="tablist" id="layer_sections_menu">
-                            <li role="presentation" class="active"><a href="#layer_conf1" role="tab" data-toggle="tab">Base</a>
-                            </li>
-                            <li role="presentation"><a href="#layer_conf2" role="tab" data-toggle="tab">Fiche</a></li>
-                            <li role="presentation"><a href="#layer_conf3" role="tab" data-toggle="tab">Affichage</a>
-                            </li>
-                            <li role="presentation"><a href="#layer_conf4" role="tab" data-toggle="tab">Filtre</a></li>
-                            <li role="presentation"><a href="#layer_conf5" role="tab" data-toggle="tab">Liste de
-                                choix</a></li>
-                            <li role="presentation"><a href="#layer_conf6" role="tab" data-toggle="tab">Recherche</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="layer_sections">
-                            <div role="tabpanel" class="tab-pane active" id="layer_conf1">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="frm-layer-title">Nom</label>
-                                        <input type="text" class="form-control" id="frm-name"
-                                               placeholder="nom de la couche">
-                                    </div>
-                                    <!--<div class="form-group">
-                                        <label for="frm-type">Type</label>
-                                        <input type="text" class="form-control" id="frm-type" placeholder="type">
-                                    </div>-->
-                                    <div class="form-group">
-                                        <label class="control-label" for="frm-type">Type</label>
-                                        <select id="frm-type" name="type" class="form-control"
-                                                onchange="mv.changeLayerType(this.value);">
-                                            <option value="wms">wms</option>
-                                            <option value="geojson">geojson</option>
-                                            <option value="kml">kml</option>
-                                            <option value="customlayer">customlayer</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="frm-layerid">id</label>
-                                        <input type="text" class="form-control" id="frm-layerid" placeholder="id">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="frm-url">url</label>
-                                        <input type="text" class="form-control checkedurl" id="frm-url"
-                                               placeholder="url">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="frm-attribution">Attributions</label>
-                                        <input type="text" class="form-control" id="frm-attribution"
-                                               placeholder="Attribution">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="frm-metadata">URL fiche de métadonnées (html)</label>
-                                        <input type="text" class="form-control checkedurl" id="frm-metadata"
-                                               placeholder="metadata">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="frm-metadata-csw">URL fiche de métadonnées (xml)</label>
-                                        <input type="text" class="form-control checkedurl" id="frm-metadata-csw"
-                                               placeholder="metadata-csw">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label" for="frm-type">Contraintes d'accès</label>
-                                        <select id="frm-secure" name="type" class="form-control">
-                                            <option value="public">Accès public</option>
-                                            <option value="global">Accès soumis à authentification globale (CAS georchestra)</option>
-                                            <option value="layer">Accès soumis à authentification au niveau du service (Basic Authent)</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input id="frm-useproxy" type="checkbox"> Utiliser le proxy du viewer (nécessaire si HTTPS non disponible pour la couche)
-                                            </label>
+            <!-- Modal file import-->
+            <div class="modal fade" id="mod-importfile" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Charger un fichier de configuration</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#serverside" aria-controls="serverside" role="tab" data-toggle="tab">Localisé sur le serveur</a></li>
+                                <li role="presentation"><a href="#local" aria-controls="local" role="tab" data-toggle="tab">Sur votre ordinateur</a></li>
+                            </ul>
+
+                            <br>
+
+                            <div class="tab-content">
+                                <div role="tabcard" class="tab-pane" id="local">
+                                    <div class="alert alert-info">
+                                        <label>Choisissez un fichier</label>
+                                        <div class="input-group">
+                                            <input type="text" id="subfile" class="form-control">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-primary" type="button"
+                                                        onclick="$('#filebutton').click();">
+                                                    <span class="icon-folder-open"></span>
+                                                    &nbsp;Parcourir...
+                                                </button>
+                                            </span>
                                         </div>
+                                        <input type="file" name="filebutton" style="display: none;" id="filebutton">
                                     </div>
-                                </form>
+                                </div>
+                                <div role="tabcard" class="tab-pane active" id="serverside">
+                                    <form class="form-inline">
+                                        <div class="form-group" style="display: none;">
+                                            <label for="apps_group_list">Groupe</label>
+                                            <select class="form-control" id="apps_group_list" onchange="mv.filterApplications()"></select>
+                                        </div>
+                                        <div class="form-group" style="display: none;">
+                                            <label for="apps_creator_list">Auteur</label>
+                                            <select class="form-control" id="apps_creator_list" onchange="mv.filterApplications()"></select>
+                                        </div>
+                                    </form>
+                                    <br>
+                                    <div class="list-group" id="liste_applications"></div>
+                                    <div class="text-right">
+                                        <button type="button" class="btn btn-danger" onclick="deleteMyApplications();">
+                                            <span class="icon-trash"></span>
+                                            &nbsp;Supprimer toutes mes applications
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="layer_conf2">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input id="frm-queryable" type="checkbox">interrogeable
-                                                    </label>
-                                                </div>
-                                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal layer options-->
+            <div class="modal fade" id="mod-layerOptions" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Edition de couche</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="nav nav-tabs" role="tablist" id="layer_sections_menu">
+                                <li role="presentation" class="active"><a href="#layer_conf1" role="tab" data-toggle="tab">Base</a>
+                                </li>
+                                <li role="presentation"><a href="#layer_conf2" role="tab" data-toggle="tab">Fiche</a></li>
+                                <li role="presentation"><a href="#layer_conf3" role="tab" data-toggle="tab">Affichage</a>
+                                </li>
+                                <li role="presentation"><a href="#layer_conf4" role="tab" data-toggle="tab">Filtre</a></li>
+                                <li role="presentation"><a href="#layer_conf5" role="tab" data-toggle="tab">Liste de
+                                    choix</a></li>
+                                <li role="presentation"><a href="#layer_conf6" role="tab" data-toggle="tab">Recherche</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="layer_sections">
+                                <div role="tabcard" class="tab-pane active" id="layer_conf1">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="frm-layer-title">Nom</label>
+                                            <input type="text" class="form-control" id="frm-name"
+                                                placeholder="nom de la couche">
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" for="frm-infopanel">Position fiche
-                                                    info</label>
-                                                <select id="frm-infopanel" name="infoformat" class="form-control">
-                                                    <option value="right-panel">Panneau de droite</option>
-                                                    <option value="bottom-panel">Panneau du bas</option>
-                                                </select>
-                                            </div>
+                                        <!--<div class="form-group">
+                                            <label for="frm-type">Type</label>
+                                            <input type="text" class="form-control" id="frm-type" placeholder="type">
+                                        </div>-->
+                                        <div class="form-group">
+                                            <label class="control-label" for="frm-type">Type</label>
+                                            <select id="frm-type" name="type" class="form-control"
+                                                    onchange="mv.changeLayerType(this.value);">
+                                                <option value="wms">wms</option>
+                                                <option value="geojson">geojson</option>
+                                                <option value="kml">kml</option>
+                                                <option value="customlayer">customlayer</option>
+                                            </select>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" for="frm-infoformat">Format de la fiche
-                                                    d'information</label>
-                                                <select id="frm-infoformat" name="infoformat" class="form-control"
-                                                        onchange="mv.showHideQueryParameters(this.value);">
-                                                    <option value="text/html">standard</option>
-                                                    <option value="application/vnd.ogc.gml">personnalisé</option>
-                                                </select>
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="frm-layerid">id</label>
+                                            <input type="text" class="form-control" id="frm-layerid" placeholder="id">
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="frm-featurecount">Limitation du nombre de réponses</label>
-                                                <input type="number" class="form-control" id="frm-featurecount"
-                                                       placeholder="Nombre max d'entités retournées" step="1" min="1"
-                                                       max="50" value="5">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="frm-url">url</label>
+                                            <input type="text" class="form-control checkedurl" id="frm-url"
+                                                placeholder="url">
                                         </div>
-                                    </div>
-                                    <div id="query-parameters">
+                                        <div class="form-group">
+                                            <label for="frm-attribution">Attributions</label>
+                                            <input type="text" class="form-control" id="frm-attribution"
+                                                placeholder="Attribution">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="frm-metadata">URL fiche de métadonnées (html)</label>
+                                            <input type="text" class="form-control checkedurl" id="frm-metadata"
+                                                placeholder="metadata">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="frm-metadata-csw">URL fiche de métadonnées (xml)</label>
+                                            <input type="text" class="form-control checkedurl" id="frm-metadata-csw"
+                                                placeholder="metadata-csw">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="frm-type">Contraintes d'accès</label>
+                                            <select id="frm-secure" name="type" class="form-control">
+                                                <option value="public">Accès public</option>
+                                                <option value="global">Accès soumis à authentification globale (CAS georchestra)</option>
+                                                <option value="layer">Accès soumis à authentification au niveau du service (Basic Authent)</option>
+                                            </select>
+                                        </div>
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input id="frm-template" type="checkbox">Utliser un template
+                                                    <input class="" id="frm-useproxy" type="checkbox"> Utiliser le proxy du viewer (nécessaire si HTTPS non disponible pour la couche)
                                                 </label>
                                             </div>
-                                            <label for="frm-template-url">URL template</label>
-                                            <input type="text" class="form-control checkedurl" id="frm-template-url"
-                                                   placeholder="URL template"/>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="frm-fields">Champs</label>
-                                            <div id="frm-lis-fields"></div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div role="tabpanel" class="tab-pane" id="layer_conf3">
-                                <form>
-                                    <div class="form-group">
+                                    </form>
+                                </div>
+                                <div role="tabcard" class="tab-pane" id="layer_conf2">
+                                    <form>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input id="frm-tiled" type="checkbox"> Couche tuilée
+                                                            <input class="" id="frm-queryable" type="checkbox">interrogeable
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input id="frm-visible" type="checkbox"> Visible au
-                                                            démarrage
-                                                        </label>
-                                                    </div>
+                                                    <label class="control-label" for="frm-infocard">Position fiche
+                                                        info</label>
+                                                    <select id="frm-infocard" name="infoformat" class="form-control">
+                                                        <option value="right-card">Panneau de droite</option>
+                                                        <option value="bottom-card">Panneau du bas</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        <label for="frm-sld">SLD externe</label>
-                                        <input type="text" class="form-control checkedurl" id="frm-sld"
-                                               placeholder="URL SLD externe"/>
-
-                                        <label for="frm-legendurl">Légende statique</label>
-                                        <input type="text" class="form-control checkedurl" id="frm-legendurl"
-                                               placeholder="URL vers Image légende"/>
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group" lang="en-US">
-                                                    <label for="frm-opacity">Opacité</label>
-                                                    <input type="number" class="form-control" id="frm-opacity"
-                                                           placeholder="Opacité (0 à 1)" step="0.1" min="0.1" max="1.0"
-                                                           value="1">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="frm-infoformat">Format de la fiche
+                                                        d'information</label>
+                                                    <select id="frm-infoformat" name="infoformat" class="form-control"
+                                                            onchange="mv.showHideQueryParameters(this.value);">
+                                                        <option value="text/html">standard</option>
+                                                        <option value="application/vnd.ogc.gml">personnalisé</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <label for="frm-scalemin">Echelle mini</label>
-                                                <input type="number" class="form-control" id="frm-scalemin"
-                                                       placeholder="Echelle mini"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="frm-scalemax">Echelle maxi</label>
-                                                <input type="number" class="form-control" id="frm-scalemax"
-                                                       placeholder="Echelle maxi"/>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="frm-featurecount">Limitation du nombre de réponses</label>
+                                                    <input type="number" class="form-control" id="frm-featurecount"
+                                                        placeholder="Nombre max d'entités retournées" step="1" min="1"
+                                                        max="50" value="5">
+                                                </div>
                                             </div>
                                         </div>
-
-                                        <label class="control-label" for="frm-styles">Styles</label>
-                                        <div class="row" id="frm-lis-styles"></div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div role="tabpanel" class="tab-pane" id="layer_conf4">
-                                <div class="well">Filtre côté serveur</div>
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label for="frm-filter">filtre actif</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8">
+                                        <div id="query-parameters">
                                             <div class="form-group">
-                                                <input type="textarea" class="form-control" id="frm-filter"
-                                                       placeholder="filtre cql">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input class="" id="frm-template" type="checkbox">Utliser un template
+                                                    </label>
+                                                </div>
+                                                <label for="frm-template-url">URL template</label>
+                                                <input type="text" class="form-control checkedurl" id="frm-template-url"
+                                                    placeholder="URL template"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="frm-fields">Champs</label>
+                                                <div id="frm-lis-fields"></div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <button type="button" onclick="$('#filter_wizard').toggle();"
-                                                    class="btn btn-primary">Créer un filtre
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div id="filter_wizard" style="display:none;">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs" role="tablist">
-                                            <li role="presentation" class="active"><a href="#attribute_filter"
-                                                                                      aria-controls="attribute_filter"
-                                                                                      role="tab" data-toggle="tab">Filtre
-                                                attributaire</a></li>
-                                            <li role="presentation"><a href="#geo_filter" aria-controls="geo_filter"
-                                                                       role="tab" data-toggle="tab">Filtre
-                                                géographique</a></li>
-                                        </ul>
-                                        <!-- Tab panes -->
-                                        <div class="tab-content">
-                                            <div role="tabpanel" class="tab-pane active" id="attribute_filter">
-                                                <div class="form-group">
-                                                    <label class="control-label">Champs</label>
-                                                    <select id="attribute_filter_fields" name="fields"
-                                                            class="form-control"
-                                                            onchange="extractFeatures(this.value, 'source')">
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label">Opérateur</label>
-                                                    <select id="attribute_filter_operators" name="operators"
-                                                            class="form-control">
-                                                        <option value="=">=</option>
-                                                        <option value="IN">IN</option>
-                                                        <option value="NOT IN">NOT IN</option>
-                                                    </select>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-8">
-                                                        <label class="control-label">valeurs sélectionnées</label>
-                                                        <div class="form-group">
-                                                            <input type="text" value="" data-role="tagsinput"
-                                                                   id="source_fields_tags" class="form-control"/>
+                                    </form>
+                                </div>
+
+                                <div role="tabcard" class="tab-pane" id="layer_conf3">
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input class="" id="frm-tiled" type="checkbox"> Couche tuilée
+                                                            </label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4" style="padding-top: 25px;">
-                                                        <button type="button" onclick="mv.saveSourceAttributeFilter()"
-                                                                class="btn btn-success">Appliquer le filtre
-                                                        </button>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input class="" id="frm-visible" type="checkbox"> Visible au
+                                                                démarrage
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div role="tabpanel" class="tab-pane" id="geo_filter">
-                                                <div id="map_filter" class="map"></div>
+                                            <label for="frm-sld">SLD externe</label>
+                                            <input type="text" class="form-control checkedurl" id="frm-sld"
+                                                placeholder="URL SLD externe"/>
+
+                                            <label for="frm-legendurl">Légende statique</label>
+                                            <input type="text" class="form-control checkedurl" id="frm-legendurl"
+                                                placeholder="URL vers Image légende"/>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group" lang="en-US">
+                                                        <label for="frm-opacity">Opacité</label>
+                                                        <input type="number" class="form-control" id="frm-opacity"
+                                                            placeholder="Opacité (0 à 1)" step="0.1" min="0.1" max="1.0"
+                                                            value="1">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="frm-scalemin">Echelle mini</label>
+                                                    <input type="number" class="form-control" id="frm-scalemin"
+                                                        placeholder="Echelle mini"/>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="frm-scalemax">Echelle maxi</label>
+                                                    <input type="number" class="form-control" id="frm-scalemax"
+                                                        placeholder="Echelle maxi"/>
+                                                </div>
+                                            </div>
+
+                                            <label class="control-label" for="frm-styles">Styles</label>
+                                            <div class="row" id="frm-lis-styles"></div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div role="tabcard" class="tab-pane" id="layer_conf4">
+                                    <div class="well">Filtre côté serveur</div>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label for="frm-filter">filtre actif</label>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div role="tabpanel" class="tab-pane" id="layer_conf5">
-                                <div class="well">Filtre côté client</div>
-                                <form>
-                                    <div class="form-group">
-                                        <div class="form-group">
-                                            <label for="frm-attributelabel">Label</label>
-                                            <input type="textarea" class="form-control" id="frm-attributelabel"
-                                                   placeholder="Texte à afficher">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <input type="textarea" class="form-control" id="frm-filter"
+                                                        placeholder="filtre cql">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="button" onclick="$('#filter_wizard').toggle();"
+                                                        class="btn btn-primary">Créer un filtre
+                                                </button>
+                                            </div>
                                         </div>
+                                        <div id="filter_wizard" style="display:none;">
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li role="presentation" class="active"><a href="#attribute_filter"
+                                                                                        aria-controls="attribute_filter"
+                                                                                        role="tab" data-toggle="tab">Filtre
+                                                    attributaire</a></li>
+                                                <li role="presentation"><a href="#geo_filter" aria-controls="geo_filter"
+                                                                        role="tab" data-toggle="tab">Filtre
+                                                    géographique</a></li>
+                                            </ul>
+                                            <!-- Tab panes -->
+                                            <div class="tab-content">
+                                                <div role="tabcard" class="tab-pane active" id="attribute_filter">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Champs</label>
+                                                        <select id="attribute_filter_fields" name="fields"
+                                                                class="form-control"
+                                                                onchange="extractFeatures(this.value, 'source')">
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Opérateur</label>
+                                                        <select id="attribute_filter_operators" name="operators"
+                                                                class="form-control">
+                                                            <option value="=">=</option>
+                                                            <option value="IN">IN</option>
+                                                            <option value="NOT IN">NOT IN</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <label class="control-label">valeurs sélectionnées</label>
+                                                            <div class="form-group">
+                                                                <input type="text" value="" data-role="tagsinput"
+                                                                    id="source_fields_tags" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4" style="padding-top: 25px;">
+                                                            <button type="button" onclick="mv.saveSourceAttributeFilter()"
+                                                                    class="btn btn-success">Appliquer le filtre
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div role="tabcard" class="tab-pane" id="geo_filter">
+                                                    <div id="map_filter" class="map"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div role="tabcard" class="tab-pane" id="layer_conf5">
+                                    <div class="well">Filtre côté client</div>
+                                    <form>
                                         <div class="form-group">
-                                            <label class="control-label">Champs</label>
-                                            <select id="opt-attributefield" name="fields" class="form-control"
-                                                    onchange="extractFeatures(this.value,'control')">
-                                            </select>
-                                            <label class="control-label">valeurs sélectionnées</label>
                                             <div class="form-group">
-                                                <input type="text" value="" data-role="tagsinput"
-                                                       id="control_fields_tags" class="form-control"/>
+                                                <label for="frm-attributelabel">Label</label>
+                                                <input type="textarea" class="form-control" id="frm-attributelabel"
+                                                    placeholder="Texte à afficher">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Champs</label>
+                                                <select id="opt-attributefield" name="fields" class="form-control"
+                                                        onchange="extractFeatures(this.value,'control')">
+                                                </select>
+                                                <label class="control-label">valeurs sélectionnées</label>
+                                                <div class="form-group">
+                                                    <input type="text" value="" data-role="tagsinput"
+                                                        id="control_fields_tags" class="form-control"/>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
+                                    </form>
+                                </div>
 
-                            <div role="tabpanel" class="tab-pane" id="layer_conf6">
-                                <form>
-                                    <div class="form-group">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input id="frm-searchable" type="checkbox"> Activer la recherche pour
-                                                cette donnée
-                                            </label>
+                                <div role="tabcard" class="tab-pane" id="layer_conf6">
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input class="" id="frm-searchable" type="checkbox"> Activer la recherche pour
+                                                    cette donnée
+                                                </label>
+                                            </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="frm-searchengine">Moteur de recherche</label>
+                                            <select id="frm-searchengine" class="form-control"
+                                                    onchange="mv.changeSearchEngine(this.value)">
+                                                <option value="elasticsearch">elasticsearch</option>
+                                                <option value="fuse">fuse</option>
+                                            </select>
+                                        </div>
+                                        <div id="fuse_options">
+                                            <div class="form-group">
+                                                <label for="frm-fusesearchkeys">fusesearchkeys</label>
+                                                <input type="text" class="form-control" id="frm-fusesearchkeys"
+                                                    placeholder="fusesearchkeys">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="frm-fusesearchkeys">fusesearchresult</label>
+                                                <input type="text" class="form-control" id="frm-fusesearchresult"
+                                                    placeholder="fusesearchresult">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="mv.saveLayerOptions()" class="btn btn-success">Enregistrer
+                            </button>
+                            <button type="button" onclick="mv.form2xml()" class="btn btn-info">Voir</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal codeView-->
+            <div class="modal fade" id="mod-codeview" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Configuration XML</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <pre></pre>
+                            </div><!-- /.row -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal featuresView-->
+            <div class="modal fade" id="mod-featuresview" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Sélection de données</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Valeurs</label>
+                                    <div id="distinct_values" class="list-group"></div>
+                                </div>
+                            </div><!-- /.row -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Themes import-->
+            <div class="modal fade" id="mod-themesview" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Sélection de Thématiques</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div id="importedThemes" class="list-group">
                                     </div>
+                                </div>
+                            </div><!-- /.row -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal" onclick="importThemes()">Importer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal new Layer-->
+            <div class="modal fade" id="mod-layerNew" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Rechercher des données</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" id="input-ogc-filter" class="form-control" aria-label="..."
+                                            placeholder="Rechercher...">
+                                        <div class="input-group-btn">
+                                            <button id="providers_dropdown" type="button" class="btn btn-warning dropdown-toggle"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Fournisseurs de données<span class="caret"/></button>
+                                            <ul class="dropdown-menu dropdown-menu-right" id="providers_list">
+                                            </ul>
+                                            <button id="provider_search_btn" type="button" class="btn btn-primary" disabled="enabled" onclick="mv.search()"><span class="icon-search"/>
+                                            </button>
+                                        </div><!-- /btn-group -->
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-md-12 -->
+                            </div><!-- /.row -->
+                            <div class="row text-center text-warning" style="padding: 1rem;" id="search-message">
+                                Aucun fournisseur sélectionné. Veuillez en choisir un.
+                            </div>
+                            <div class="row ogc-results" id="csw-results" style="display: none;"></div>
+                            <div class="row ogc-results" id="wms-results" style="display: none;"></div>
+                            <div class="row ogc-results" id="wfs-results" style="display: none;"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="pull-left">
+                                <div class="form form-inline">
                                     <div class="form-group">
-                                        <label class="control-label" for="frm-searchengine">Moteur de recherche</label>
-                                        <select id="frm-searchengine" class="form-control"
-                                                onchange="mv.changeSearchEngine(this.value)">
-                                            <option value="elasticsearch">elasticsearch</option>
-                                            <option value="fuse">fuse</option>
+                                        <input class="form-control custom-url" type="text"
+                                            placeholder="URL du fournisseur..." oninput="updateAddProviderButtonState(this);"> </input>
+                                        <select class="form-control">
+                                            <option value="csw">CSW</option>
+                                            <option value="wms">WMS</option>
                                         </select>
-                                    </div>
-                                    <div id="fuse_options">
-                                        <div class="form-group">
-                                            <label for="frm-fusesearchkeys">fusesearchkeys</label>
-                                            <input type="text" class="form-control" id="frm-fusesearchkeys"
-                                                   placeholder="fusesearchkeys">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="frm-fusesearchkeys">fusesearchresult</label>
-                                            <input type="text" class="form-control" id="frm-fusesearchresult"
-                                                   placeholder="fusesearchresult">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" onclick="mv.saveLayerOptions()" class="btn btn-success">Enregistrer
-                        </button>
-                        <button type="button" onclick="mv.form2xml()" class="btn btn-info">Voir</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal codeView-->
-        <div class="modal fade" id="mod-codeview" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Configuration XML</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <pre></pre>
-                        </div><!-- /.row -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal featuresView-->
-        <div class="modal fade" id="mod-featuresview" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Sélection de données</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label class="control-label">Valeurs</label>
-                                <div id="distinct_values" class="list-group"></div>
-                            </div>
-                        </div><!-- /.row -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal Themes import-->
-        <div class="modal fade" id="mod-themesview" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Sélection de Thématiques</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div id="importedThemes" class="list-group">
-                                </div>
-                            </div>
-                        </div><!-- /.row -->
-                    </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="importThemes()">Importer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal new Layer-->
-        <div class="modal fade" id="mod-layerNew" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Rechercher des données</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="input-group">
-                                    <input type="text" id="input-ogc-filter" class="form-control" aria-label="..."
-                                           placeholder="Rechercher...">
-                                    <div class="input-group-btn">
-                                        <button id="providers_dropdown" type="button" class="btn btn-warning dropdown-toggle"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Fournisseurs de données<span class="caret"/></button>
-                                        <ul class="dropdown-menu dropdown-menu-right" id="providers_list">
-                                        </ul>
-                                        <button id="provider_search_btn" type="button" class="btn btn-primary" disabled="enabled" onclick="mv.search()"><span class="glyphicon glyphicon-search"/>
+                                        <input class="form-control custom-title" type="text" placeholder="Nom..." oninput="updateAddProviderButtonState(this);"> </input>
+                                        <button id="add_provider_btn" type="button" class="btn btn-primary" disabled onclick="addNewProvider(this);">
+                                            Ajouter un fournisseur
                                         </button>
-                                    </div><!-- /btn-group -->
-                                </div><!-- /input-group -->
-                            </div><!-- /.col-md-12 -->
-                        </div><!-- /.row -->
-                        <div class="row text-center text-warning" style="padding: 1rem;" id="search-message">
-                            Aucun fournisseur sélectionné. Veuillez en choisir un.
-                        </div>
-                        <div class="row ogc-results" id="csw-results" style="display: none;"></div>
-                        <div class="row ogc-results" id="wms-results" style="display: none;"></div>
-                        <div class="row ogc-results" id="wfs-results" style="display: none;"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="pull-left">
-                            <div class="form form-inline">
-                                <div class="form-group">
-                                    <input class="form-control custom-url" type="text"
-                                           placeholder="URL du fournisseur..." oninput="updateAddProviderButtonState(this);"> </input>
-                                    <select class="form-control">
-                                        <option value="csw">CSW</option>
-                                        <option value="wms">WMS</option>
-                                    </select>
-                                    <input class="form-control custom-title" type="text" placeholder="Nom..." oninput="updateAddProviderButtonState(this);"> </input>
-                                    <button id="add_provider_btn" type="button" class="btn btn-primary" disabled onclick="addNewProvider(this);">
-                                        Ajouter un fournisseur
-                                    </button>
+                                    </div>
                                 </div>
                             </div>
+                            <button type="button" class="btn btn-success" onclick="mv.getConfLayers();">Sélectionner</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                         </div>
-                        <button type="button" class="btn btn-success" onclick="mv.getConfLayers();">Sélectionner</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Modal icon picker-->
-        <div id="iconPicker" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Liste des icônes</h4>
-                    </div>
-                    <div class="modal-body" style="max-height: calc(100vh - 200px);overflow-y: auto;">
-                        <div>
-                            <ul class="icon-picker-list">
-                                <li>
-                                    <a data-class="{{item}} {{activeState}}" data-index="{{index}}">
-                                        <span class="{{item}}"></span>
-                                        <span class="name-class">{{item}}</span>
-                                    </a>
-                                </li>
-                            </ul>
+            <!-- Modal icon picker-->
+            <div id="iconPicker" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Liste des icônes</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="change-icon" class="btn btn-success">
-                            <span class="fa fa-check-circle-o"></span>
-                            Utiliser l'icône sélectionnée
-                        </button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                        <div class="modal-body" style="max-height: calc(100vh - 200px);overflow-y: auto;">
+                            <div>
+                                <ul class="icon-picker-list">
+                                    <li>
+                                        <a data-class="{{item}} {{activeState}}" data-index="{{index}}">
+                                            <span class="{{item}}"></span>
+                                            <span class="name-class">{{item}}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="change-icon" class="btn btn-success">
+                                <span class="fa fa-check-circle-o"></span>
+                                Utiliser l'icône sélectionnée
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                        </div>
                     </div>
                 </div>
             </div>

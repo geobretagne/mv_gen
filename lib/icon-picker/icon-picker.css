@@ -28,7 +28,7 @@
 
 .icon-picker-list a:hover,
 .icon-picker-list a.active{
-    background-color: #009E49;
+    background-color: rgba(46, 83, 103,0.2);
     color: #fff;
     cursor: pointer;
     text-decoration: none;

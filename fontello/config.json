@@ -1,0 +1,146 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "559647a6f430b3aeadbecd67194451dd",
+      "css": "menu",
+      "code": 61641,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "fa9a0b7e788c2d78e24cef1de6b70e80",
+      "css": "brush",
+      "code": 61948,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "c62cbc7fa604e32cc19731a3bb29be79",
+      "css": "map-o",
+      "code": 62072,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "9dd9e835aebe1060ba7190ad2b2ed951",
+      "css": "search",
+      "code": 59393,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "197375a3cea8cb90b02d06e4ddf1433d",
+      "css": "globe",
+      "code": 59394,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "f805bb95d40c7ef2bc51b3d50d4f2e5c",
+      "css": "th-list",
+      "code": 59392,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "98687378abd1faf8f6af97c254eb6cd6",
+      "css": "cog-alt",
+      "code": 59395,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "a73c5deb486c8d66249811642e5d719a",
+      "css": "arrows-cw",
+      "code": 59396,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "f4445feb55521283572ee88bc304f928",
+      "css": "floppy",
+      "code": 59397,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "9a76bc135eac17d2c8b8ad4a5774fc87",
+      "css": "download",
+      "code": 59398,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "c5fd349cbd3d23e4ade333789c29c729",
+      "css": "eye",
+      "code": 59399,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "62d7e612559d34f11f30202bdae098b3",
+      "css": "power-off",
+      "code": 59400,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M781.3 105.7C904.3 193.6 984.4 337.3 984.4 500 984.4 767.2 768 983.8 501 984.4 234.4 985 16 767.6 15.6 500.8 15.4 338.1 95.5 193.9 218.4 105.9 241.2 89.6 273 96.5 286.7 120.9L317.6 175.8C329.1 196.3 323.6 222.3 304.7 236.3 223.6 296.5 171.9 391.8 171.9 499.8 171.7 680.1 317.4 828.1 500 828.1 678.9 828.1 829.3 683.2 828.1 497.9 827.5 396.7 779.9 299 695.1 236.1 676.2 222.1 670.9 196.1 682.4 175.8L713.3 120.9C727 96.7 758.6 89.5 781.3 105.7ZM578.1 515.6V46.9C578.1 20.9 557.2 0 531.3 0H468.8C442.8 0 421.9 20.9 421.9 46.9V515.6C421.9 541.6 442.8 562.5 468.8 562.5H531.3C557.2 562.5 578.1 541.6 578.1 515.6Z",
+        "width": 1000
+      },
+      "search": [
+        "power-off"
+      ]
+    },
+    {
+      "uid": "d35a1d35efeb784d1dc9ac18b9b6c2b6",
+      "css": "pencil",
+      "code": 59401,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "44e04715aecbca7f266a17d5a7863c68",
+      "css": "plus",
+      "code": 59402,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "fdfc0b146a669b0a4e012d31c9719035",
+      "css": "arrows-alt",
+      "code": 59403,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M687.9 831.6L533.2 986.3C514.9 1004.6 485.2 1004.6 466.9 986.3L312.2 831.6C282.7 802.1 303.6 751.6 345.4 751.6H445.3L445.3 554.7H248.4V654.6C248.4 696.4 197.9 717.3 168.4 687.8L13.7 533.1C-4.6 514.8-4.6 485.1 13.7 466.8L168.4 312.1C197.9 282.6 248.4 303.5 248.4 345.3V445.3H445.3V248.4H345.3C303.5 248.4 282.6 197.9 312.1 168.4L466.8 13.7C485.1-4.6 514.8-4.6 533.1 13.7L687.8 168.4C717.3 197.9 696.4 248.4 654.6 248.4H554.7V445.3H751.6V345.4C751.6 303.6 802.1 282.7 831.6 312.2L986.3 466.9C1004.6 485.2 1004.6 514.9 986.3 533.2L831.6 687.9C802.1 717.4 751.6 696.5 751.6 654.7V554.7H554.7V751.6H654.7C696.5 751.6 717.4 802.1 687.9 831.6Z",
+        "width": 1000
+      },
+      "search": [
+        "arrows-alt"
+      ]
+    },
+    {
+      "uid": "12f4ece88e46abd864e40b35e05b11cd",
+      "css": "ok",
+      "code": 59404,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "861ab06e455e2de3232ebef67d60d708",
+      "css": "minus",
+      "code": 59405,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "5211af474d3a9848f67f945e2ccaf143",
+      "css": "cancel",
+      "code": 59406,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "c95735c17a10af81448c7fed98a04546",
+      "css": "folder-open",
+      "code": 59407,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "bbfb51903f40597f0b70fd75bc7b5cac",
+      "css": "trash",
+      "code": 61944,
+      "src": "fontawesome"
+    }
+  ]
+}
