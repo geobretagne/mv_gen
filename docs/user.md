@@ -11,12 +11,11 @@ mviewerstudio est une application qui permet de générer et de déployer des ap
 
 Avant de vous lancer dans la belle aventure du mviewer studio et de goûter les joies de monter sa propre application cartographique, vous devrez malgré tout vous être assuré.e d'avoir rempli les prérequis suivants :
 
- - Le cas échéant, avoir demandé **les droits** aux administrateurs   
-   pour vous connecter à l’application mviewerstudio.
-  -  Avoir déposé le ou les jeux de données "métier" nécessaires sur un catalogue en **flux OGC** en respectant les    recommandations
+ - Le cas échéant, avoir demandé **les droits** aux administrateurs pour vous connecter à l’application mviewerstudio.
+ - Avoir déposé le ou les jeux de données "métier" nécessaires sur un catalogue en **flux OGC** en respectant les recommandations
    ([exemple sur GéoBretagne](https://cms.geobretagne.fr/content/deposer-des-donnees-shapefile-sur-geobretagne-grace-pydio)).
  - Avoir créé la ou les **fiches de métadonnées** nécessaires sur le catalogue partenaire (ou sur son propre catalogue CSW).
-  -   Disposer des **fichiers de styles SLD** nécessaires.
+ - Disposer des **fichiers de styles SLD** nécessaires.
 
 *N.B sur GéoBretagne : pour plus de confort et d’autonomie, il est fortement conseillé d’être [administrateur délégué](https://cms.geobretagne.fr/content/administration-deleguee-sur-geoserver) de ses données sur GéoBretagne.*
 
@@ -40,11 +39,11 @@ Avant de vous lancer dans la belle aventure du mviewer studio et de goûter les 
 
 **1. Sauvegarder** : pour enregistrer votre fichier de configuration (xml) sur l'espace du mviewer studio
 
-**2. Prévisualiser** : pour pouvoir visualiser le résultat de votre application à tout moment
+**2. Prévisualiser** : pour visualiser le résultat de votre application à tout moment
 
-**3. Télécharger :** pour télécharger votre fichier xml de configuration en local
+**3. Télécharger** : pour télécharger votre fichier xml de configuration en local
 
-**4. Charger :** pour charger sur le mviewer studio un fichier xml existant en local
+**4. Charger** : pour charger sur le mviewer studio un fichier xml existant en local
 
 Exemple après avoir sauvegardé, je clique sur "**Prévisualiser**" et je visualise déjà le résultat de mon application à ce stade :
 
@@ -56,18 +55,19 @@ Exemple après avoir sauvegardé, je clique sur "**Prévisualiser**" et je visua
 
 ![Thematique-Donnees](img/thematique-donnes.png)
 
-Le mot "**données**" correspond à un ou des jeu(x) de données que vous souhaitez ajouter à votre application. Vous avez la possibilité de regrouper un ou plusieurs jeux de données sous une "**thématique**". Exemple, je veux ajouter les deux couches de données (linéaire du plan vélo et des abris vélo) sous une thématique "Plan Vélo".
+Le mot "**données**" correspond à un ou des jeu(x) de données que vous souhaitez ajouter à votre application. Vous avez la possibilité de regrouper un ou plusieurs jeux de données sous une même "**thématique**". Exemple, je veux ajouter deux couches de données (la couche des linéaires du plan vélo et la couche des abris vélo) sous une thématique "Plan Vélo".
 
 ![Selection-Donnees](img/selection-donnees.png)
 
-**1.Créer **: pour créer votre thématique et y associer vos jeux de données "métier"
+**1. Créer** : pour créer votre thématique et y associer vos jeux de données "métier"
 
-**2. Importer **: pour réutiliser une thématique déjà créée au sein de la communauté mviewer (ex. la thématique des découpages territoriaux qui contient les limites de communes, EPCI et départements
+**2. Importer** : pour réutiliser une thématique déjà créée au sein de la communauté mviewer (ex. la thématique des découpages territoriaux qui contient les limites de communes, EPCI et départements). Ce bouton peut ne pas apparaître dans votre mviewer studio car son activation est optionnelle.
 
 ## Option - Créer une thématique
+
 ![Créer-thématique](img/creer-thematique.png)
 
-En cliquant sur "**Ajouter des données**", vous pouvez chercher un jeu de données dans le catalogue (ex. GéoBretagne), soit **(1)** par mot-clé (cas le plus courant), soit **(2)** en renseignant l'adresse du catalogue fournisseur (ou du service WMS) :
+En cliquant sur "**Ajouter des données**", vous pouvez chercher un jeu de données auprès d'un service en ligne (catalogue en ligne comme celui de GéoBretagne ou un service WMS) :
 
 ![Rechercher-donnees](img/rechercher-donnees.png)
 
@@ -77,19 +77,22 @@ Les données nécessaires ont été ajoutées à la thématique, vous cliquez su
 
 
 Pour modifier la façon de **visualiser/interroger** un jeu de données, cliquez ici :
+
 ![Visualiser-interroger-donnees](img/parametrage-donnees.png)
 
-Aller dans les différents onglets faire les paramétrages.
+Allez dans les différents onglets faire les paramétrages.
 
 ### Onglet Base
 
-La plupart des informations sont récupérées des flux. Si c’est bien renseigné, il n’y a rien à changer à part éventuellement le titre de la donnée qui apparaîtra dans votre application mviewer.
+La plupart des informations sont récupérées des flux. S'ils sont bien renseignés, il n’y a rien à changer à part éventuellement le titre de la donnée qui apparaîtra dans votre application mviewer.
+
 ![Onglet-base](img/onglet-base.png)
 
 
 ### Onglet Fiche
 
 Exemple sur l'onglet FICHE dans format de la fiche d’information, on clique sur "*personnalisé*" pour paramétrer ce qui apparaitra dans la fiche info quand on cliquera sur une portion du linéaire :
+
 ![Onglet-fiche](img/onglet-fiche.png)
 
 On choisit les champs que l’on veut afficher dans la fiche d’information et le type (titre, texte, lien, image…).
@@ -98,6 +101,7 @@ On choisit les champs que l’on veut afficher dans la fiche d’information et 
 ### Onglet Affichage
 
 On peut aussi y paramétrer la légende (fichier SLD) dans l’onglet **Affichage**. Si le SLD n'a pas été créé et stocké sur GéoBretagne, on peut entrer une URL externe (et un png pour l'affichage de la légende) :
+
 ![Onglet-affichage](img/onglet-affichage.png)
 
 
@@ -105,6 +109,7 @@ On peut aussi y paramétrer la légende (fichier SLD) dans l’onglet **Affichag
 ### Onglet Filtre
 
 L’onglet **Filtre** permet de filtrer la donnée. On peut avoir un filtre géographique ou attributaire. Exemple ici avec un filtre sur un code SIREN :
+
 ![Onglet-filtre](img/onglet-filtre.png)
 
 
@@ -112,8 +117,9 @@ L’onglet **Filtre** permet de filtrer la donnée. On peut avoir un filtre géo
 ### Onglet Liste de choix
 
 L’onglet **Liste de choix** permet d’avoir dans son application la possibilité de faire un filtre sur la valeur à afficher. Exemple ici on pourra filtrer les structures qui ont un multi accueil ou pas :
+
 ![Onglet-liste-de-choix](img/onglet-liste-de-choix.png)
-![Onglet-liste-de-choix-visu](img/onglet-liste-de-choix_visu.png)
+![Onglet-liste-de-choix-visu](img/onglet-liste-de-choix-visu.png)
 
 
 ## Option - Récupérer une thématique existante
@@ -122,13 +128,17 @@ L’onglet **Liste de choix** permet d’avoir dans son application la possibili
 ![Previsualiser-thematique](img/previsualiser-thematique.png)
 
 Choisir dans la liste la ou les thématiques que vous souhaitez récupérer et cliquer sur "**Importer**" en bas de page :
+
 ![Selection-thematique](img/importer-thematique.png)
 
-A ce stade, vous avez vos deux thématiques :
+À ce stade, vous avez vos deux thématiques :
+
 ![Previsualiser-thematique](img/previsualiser-thematique.png)
 
-En cliquant sur **Prévisualiser**, vous accédez à votre applicatif cartographique en ligne :
+En cliquant sur **Prévisualiser**, vous accédez à votre application cartographique en ligne :
+
 ![Visu-resultat-thematique](img/visu-resultat-thematique.png)
+
 *N.B : la liste des thématiques est en cours d’élaboration, il est possible qu’il y ait des erreurs.*
 
 
@@ -149,14 +159,14 @@ Activer la recherche d’entités par adresse en utilisant l’API de la base ad
 
 # Enregistrer et mettre à disposition
 
-Ne pas oublier de Sauvegarder, de Télécharger son fichier xml et d'enregistrer l'URL qui apparaît quand vous prévisualiser.
+N'oubliez pas de sauvegarder, de télécharger le fichier xml de votre application et d'enregistrer l'URL qui apparaît quand vous la prévisualisez.
 
 ![Enregistrer](img/enregistrer.png)
 
 
 # Mise en production
 
-L’url fournie par mviewer studio évolue à chaque enregistrement. Pour une mise en production de votre application, merci de contacter votre administrateur de donnée GéoBretagne qui vous créera un espace de stockage accessible depuis explorer où déposer votre fichier XML.
+L’url fournie par mviewer studio évolue à chaque enregistrement. Pour une mise en production de votre application, merci de contacter votre administrateur de données qui vous créera un espace de stockage accessible où déposer votre fichier XML.
 
 
 # Intégration dans votre site web
@@ -180,7 +190,7 @@ Vous souhaitez intégrer l’application produite sur votre site web ? Ci-dessou
 
 Les paramètres suivants sont modifiables :
 
- + **height** : hauteur de la carte en pixel
+ + **height** : hauteur de la carte en pixels
 
  + **z** : niveau de zoom
 
@@ -195,6 +205,7 @@ Vous pouvez intégrer ce code (iframe) dans votre page html.
 # Pour aller plus loin...
 
 Vous pourrez travailler le fichier.xml sous un éditeur dédié (ex. Notepad++ [https://notepad-plus-plus.org/](https://notepad-plus-plus.org/)) en vous appuyant sur la documentation plus avancée du mviewer : [https://mviewerdoc.readthedocs.io/fr/latest/index.html](https://mviewerdoc.readthedocs.io/fr/latest/index.html)
+
 ![Doc-mviewer](img/doc-mviewer.png)
 
 Vous y apprendrez par exemple :
@@ -202,12 +213,3 @@ Vous y apprendrez par exemple :
  - Comment ajouter un lien vers votre site internet à partir du logo dans le bandeau,
  - Comment paramétrer plus finement la fiche d'information,
  - Et plein d'autres choses encore, si vous avez la motivation pour rentrer un peu dans du code !
-
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbNzkyOTIyNDc3LC00OTY3OTMyODUsNTMwOD
-IwNjI0LC02NDUzMTcwMDUsLTE3MzQ0MDg1NDMsLTEzMDQ2MzMy
-NzQsMzQyMDM2ODgsLTIwNjY0MTYyNTIsODkwOTM3NTkzLDEzNz
-I1ODExNDMsLTYzMzk2MDExOCwtNjYwOTk3NzI2LC0xNzQwOTYw
-MjgxLDk5Mjk3MzgwNCwxODQ4ODQzODEwLDIzMjYzMTQyLC0yMT
-M5NzI0NjU1XX0=
--->

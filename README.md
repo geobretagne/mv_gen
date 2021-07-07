@@ -6,6 +6,6 @@ Application écrite en javascript php/pyhon
 
 Référez-vous à la documentatiopn plus plus d'informations
 
- * [Documentation utilisateur](doc/user.md)
- * [Documentation d'installation](doc/install)
- * [Documentation administrateur](doc/admin.md)
+ * [Documentation utilisateur](docs/user.md)
+ * [Documentation d'installation](docs/install.md)
+ * [Documentation administrateur](docs/admin.md)
